@@ -1,9 +1,8 @@
 # -secure-TCP-based-IoT-honeypot
+````markdown
 # 🛡️ IoT Honeypot Attacker Logger
 
 A secure, TCP-based IoT honeypot system that detects and logs malicious payloads sent to a simulated IoT device. It features AES-based encryption, attacker IP spoofing, and a live dashboard to analyze attack behavior.
-
----
 
 ## 📌 Features
 
@@ -14,8 +13,6 @@ A secure, TCP-based IoT honeypot system that detects and logs malicious payloads
 - Supports multi-client attack simulations.
 - Safe sandbox: no real system is compromised.
 
----
-
 ## 🧠 Architecture
 
 - **Server:** Accepts and decrypts commands, logs data, responds with fake system banners.
@@ -24,101 +21,97 @@ A secure, TCP-based IoT honeypot system that detects and logs malicious payloads
 - **Logger:** Logs data to both SQLite and CSV.
 - **Dashboard:** Visualizes logs using Streamlit.
 
----
-
 ## 🖥️ Requirements
-
-Install dependencies with:
 
 ```bash
 pip install -r requirements.txt
-Libraries used:
+````
 
-cryptography
+**Libraries used:**
 
-streamlit
+* cryptography
+* streamlit
+* pandas
+* sqlite3 (built-in)
+* requests
 
-pandas
+## 🚀 Getting Started
 
-sqlite3 (built-in)
+### 1. Start the Honeypot Server
 
-requests
-
-🚀 Getting Started
-1. Start the Honeypot Server
-bash
-Copy
-Edit
+```bash
 python server.py
-2. Launch a Simulated Attacker (Client)
-bash
-Copy
-Edit
+```
+
+### 2. Launch a Simulated Attacker (Client)
+
+```bash
 python client.py
+```
+
 You’ll be prompted to enter:
 
-Server IP (e.g., 127.0.0.1 for localhost)
+* Server IP (e.g., 127.0.0.1)
+* A fake attacker IP (e.g., 51.140.123.1)
+* A command to simulate (e.g., ls, whoami, etc.)
 
-A fake attacker IP (e.g., 51.140.123.1)
+### 3. View Real-Time Dashboard
 
-A command to simulate (e.g., ls, whoami, etc.)
-
-3. View Real-Time Dashboard
-bash
-Copy
-Edit
+```bash
 streamlit run app.py
-🛠️ Example Attack Simulation
-bash
-Copy
-Edit
+```
+
+## 🛠️ Example Attack Simulation
+
+```bash
 Enter Server IP (WSL2 IP): 127.0.0.1
 Enter fake attacker IP: 51.140.123.1
 Enter command: whoami
-📊 Dashboard Features
-Filter logs by attacker IP, payload, and country.
+```
 
-Visualize:
+## 📊 Dashboard Features
 
-📈 Attack frequency by IP
+* Filter logs by attacker IP, payload, and country.
+* Visualize:
 
-🌍 Attacks by country
+  * 📈 Attack frequency by IP
+  * 🌍 Attacks by country
+  * 🕒 Attacks over time
+* Download logs as CSV
 
-🕒 Attacks over time
+## 📁 Project Structure
 
-Download logs as CSV
-
-📁 Project Structure
-graphql
-Copy
-Edit
+```
 .
-├── app.py              # Streamlit dashboard
-├── client.py           # Simulated attacker client
-├── server.py           # Honeypot server
-├── encryption.py       # Encryption/decryption using Fernet
-├── logger.py           # Log handler (SQLite and CSV)
-├── honeypot_core.py    # (Handles fake OS responses) ← ADD THIS FILE
-├── honeypot_logs.db    # SQLite log DB (excluded via .gitignore)
-├── honeypot_logs.csv   # CSV log file (optional)
-├── requirements.txt    # Python dependencies
-└── README.md           # Project documentation
-🔐 Security Features
-AES encryption for secure communication.
+├── app.py
+├── client.py
+├── server.py
+├── encryption.py
+├── logger.py
+├── honeypot_core.py
+├── requirements.txt
+└── README.md
+```
 
-Fake IP injection for simulating geographic variation.
+## 🔐 Security Features
 
-Logs attacker IPs, payloads, and timestamps.
+* AES encryption for secure communication.
+* Fake IP injection for simulating geographic variation.
+* Logs attacker IPs, payloads, and timestamps.
+* No real services are exposed — everything is sandboxed.
 
-No real services are exposed — everything is sandboxed.
+## 📝 License
 
-📝 License
 This project is intended for educational and research purposes only. No part of this system should be deployed in a live or production environment without proper review and modification.
 
-🙋 Author
-Jeevan EG
+## 🙋 Author
+
+**Jeevan EG**
 School of Computer Science
 RV University
+
+```
+```
 
 Track attack sources by country.
 
