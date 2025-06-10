@@ -1,0 +1,5 @@
+cryptography
+streamlit
+pandas
+sqlite3 
+requests
