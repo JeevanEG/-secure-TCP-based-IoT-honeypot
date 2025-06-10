@@ -28,6 +28,8 @@ A secure, TCP-based IoT honeypot system that detects and logs malicious payloads
 
 ## 🖥️ Requirements
 
+Install dependencies with:
+
 ```bash
 pip install -r requirements.txt
 Libraries used:
@@ -43,20 +45,25 @@ sqlite3 (built-in)
 requests
 
 🚀 Getting Started
-Start the server:
-
+1. Start the Honeypot Server
 bash
 Copy
 Edit
 python server.py
-Run a simulated attacker (client):
-
+2. Launch a Simulated Attacker (Client)
 bash
 Copy
 Edit
 python client.py
-Launch the dashboard:
+You’ll be prompted to enter:
 
+Server IP (e.g., 127.0.0.1 for localhost)
+
+A fake attacker IP (e.g., 51.140.123.1)
+
+A command to simulate (e.g., ls, whoami, etc.)
+
+3. View Real-Time Dashboard
 bash
 Copy
 Edit
@@ -69,9 +76,49 @@ Enter Server IP (WSL2 IP): 127.0.0.1
 Enter fake attacker IP: 51.140.123.1
 Enter command: whoami
 📊 Dashboard Features
-Filter logs by IP, payload, or country.
+Filter logs by attacker IP, payload, and country.
 
-Visualize attack frequency by IP.
+Visualize:
+
+📈 Attack frequency by IP
+
+🌍 Attacks by country
+
+🕒 Attacks over time
+
+Download logs as CSV
+
+📁 Project Structure
+graphql
+Copy
+Edit
+.
+├── app.py              # Streamlit dashboard
+├── client.py           # Simulated attacker client
+├── server.py           # Honeypot server
+├── encryption.py       # Encryption/decryption using Fernet
+├── logger.py           # Log handler (SQLite and CSV)
+├── honeypot_core.py    # (Handles fake OS responses) ← ADD THIS FILE
+├── honeypot_logs.db    # SQLite log DB (excluded via .gitignore)
+├── honeypot_logs.csv   # CSV log file (optional)
+├── requirements.txt    # Python dependencies
+└── README.md           # Project documentation
+🔐 Security Features
+AES encryption for secure communication.
+
+Fake IP injection for simulating geographic variation.
+
+Logs attacker IPs, payloads, and timestamps.
+
+No real services are exposed — everything is sandboxed.
+
+📝 License
+This project is intended for educational and research purposes only. No part of this system should be deployed in a live or production environment without proper review and modification.
+
+🙋 Author
+Jeevan EG
+School of Computer Science
+RV University
 
 Track attack sources by country.
 
